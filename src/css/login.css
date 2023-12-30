@@ -1,0 +1,40 @@
+.loginForm {
+    width: 456px;
+    height: 250px;
+    flex-shrink: 0;
+    fill: #FFF;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.12));
+    margin-left: 35%;
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+    margin-top: 5rem;
+}
+
+.loginForm input {
+    display: flex;
+    padding: 5px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #7749F8;
+    background: #FFF;
+    box-shadow: 0 0 0 3px rgba(102, 16, 242, 0.15);
+    position: relative;
+    left: 30%;
+    top: 20%;
+    margin-bottom: 0.6rem;
+
+}
+
+.loginForm button {
+    display: inline-flex;
+    padding: 10px 16px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 6px;
+    background: #7749F8;
+    position: relative;
+    top: 60px;
+    left: 190px;
+}

@@ -1,0 +1,25 @@
+.NavHeader {
+    display: flex;
+    /*width: 1440px;*/
+    padding: 20px 160px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-bottom: 1px solid #DEE2E6;
+    background: #FFF;
+    height: 3rem;
+}
+.NavHeader h3 {
+    color: #343A40;
+    /* Bold/H1 Heading */
+    font-family: Inter, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+.goBack {
+    cursor: pointer;
+}

@@ -1,0 +1,85 @@
+.profileDiv {
+    display: flex;
+    width: 750px;
+    height: 550px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #DEE2E6;
+    background: #FFF;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.profileForm button {
+    display: inline-flex;
+    padding: 10px 16px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 6px;
+    background: #7749F8;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.profileForm input {
+    display: flex;
+    padding: 5px 12px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #7749F8;
+    background: #FFF;
+    box-shadow: 0 0 0 3px rgba(102, 16, 242, 0.15);
+    position: relative;
+    left: 10px;
+    top: 10px;
+    margin-bottom: 0.6rem;
+}
+
+.profileDiv h4 {
+    color: #212529;
+
+    /* Semi-Bold / H4 Heading */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0 0 0 10px;
+}
+
+.profileDiv img {
+    width: 300px;
+    /*height: 300px;*/
+    flex-shrink: 0;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.35);
+    /*margin-bottom: 10px;*/
+}
+
+.h4Input {
+    font-family: inherit; /* Inherit font from parent element */
+    font-size: 1.5rem; /* Match h4 font size */
+    font-weight: bold; /* Match h4 font weight */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    border: none; /* Remove border */
+    background-color: transparent; /* Make background transparent */
+    cursor: default; /* Indicate uneditable state */
+    width: 100px;
+}
+
+.profileHeader p {
+    display: inline;
+}
+
+.profileForm {
+    position: relative;
+    top: -20px;
+}
