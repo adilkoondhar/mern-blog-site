@@ -103,13 +103,6 @@ const protect = asyncHandler(async (req, res, next) => {
 
 });
 
-app.get('/api/me', protect, asyncHandler(async (req, res) => {
-    res.header('Access-Control-Allow-Origin', '*');
-
-    res.json(req.user);
-    console.log(req.user);
-}));
-
 // create a path to update the user in database
 
 app.post('/api/user/update', protect, asyncHandler(async (req, res) => {
