@@ -4,7 +4,6 @@ import "./css/dashboard.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
 import Blog from "./components/Blog.js";
-
 const Dashboard = () => {
 
     const storedUser = localStorage.getItem("user");
@@ -41,7 +40,7 @@ const Dashboard = () => {
                         Authorization: `Bearer ${token}`,
                     },
                 };
-                axios.get("http://localhost:3000/api/user/posts", config)
+                axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
                     .then(res => {
                         setBlogs(res.data);
                         setIsLoading(false);
@@ -52,7 +51,7 @@ const Dashboard = () => {
                         setIsLoading(false); // Handle error state
                     });
             } else if (specificUser) {
-                axios.get(`http://localhost:3000/api/user/posts/${tempUser}`)
+                axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts/${tempUser}")
                     .then(res => {
                         setBlogs(res.data);
                         setIsLoading(false);
@@ -65,7 +64,7 @@ const Dashboard = () => {
                     });
             }
             else {
-                axios.get("http://localhost:3000/api/posts")
+                axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
                     .then(res => {
                         setBlogs(res.data);
                         setIsLoading(false);
@@ -100,7 +99,7 @@ const Dashboard = () => {
             },
         };
 
-        axios.post("http://localhost:3000/api/post", {
+        axios.post(process.env.REACT_APP_BACKEND_API + "/post", {
             title: title,
             content: content
         }, config)

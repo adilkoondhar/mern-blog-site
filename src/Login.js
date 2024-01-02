@@ -22,7 +22,7 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        axios.post("http://localhost:3000/api/login", {
+        axios.post(process.env.REACT_APP_BACKEND_API + "/login", {
             email: email,
             password: password
         })

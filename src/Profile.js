@@ -59,7 +59,7 @@ const Profile = () => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            axios.post("http://localhost:3000/api/user/update", {
+            axios.post(process.env.REACT_APP_BACKEND_API + "/user/update", {
                 password: newPassword,
                 firstName: firstName,
                 lastName: lastName,

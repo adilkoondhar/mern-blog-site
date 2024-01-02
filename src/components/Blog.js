@@ -34,7 +34,7 @@ const Blog = (props) => {
             },
         };
         // post request to update post
-        axios.post(`http://localhost:3000/api/user/posts/${props.title}`, {
+        axios.post(process.env.REACT_APP_BACKEND_API + "/user/posts/${props.title}", {
             title: title,
             content: content
         }, config)
@@ -59,7 +59,7 @@ const Blog = (props) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        axios.delete(`http://localhost:3000/api/user/posts/${props.title}`, config)
+        axios.delete(process.env.REACT_APP_BACKEND_API + "/user/posts/${props.title}", config)
             .then(res => {
                 console.log(res);
                 props.refresh();

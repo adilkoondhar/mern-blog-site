@@ -5,7 +5,6 @@ import "./css/signup.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
 import axios from "axios";
-
 const Signup = () => {
 
     const [userData, setUserData] = useState({
@@ -30,7 +29,7 @@ const Signup = () => {
             toast.error("Passwords do not match");
         }
         else {
-            axios.post("http://localhost:3000/api/user", {
+            axios.post(process.env.REACT_APP_BACKEND_API + "/user", {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
