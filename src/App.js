@@ -6,6 +6,7 @@ import Signup from "./Signup.js";
 import Login from "./Login.js";
 import Dashboard from "./Dashboard.js";
 import PrivateRoute from "./PrivateRoute.js";
+import UserPosts from "./UserPosts.js";
 function App() {
 
   return (
@@ -21,6 +22,7 @@ function App() {
                         <PrivateRoute isAuthenticated={true} />
                     }
                 />
+                <Route path="/posts/:user" element={<UserPosts />} />
             </Routes>
         </Router>
         <ToastContainer />

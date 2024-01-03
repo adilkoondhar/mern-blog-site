@@ -9,6 +9,8 @@ import {Navigate} from "react-router-dom";
 
 const Profile = () => {
 
+    const [loadingCircle, setLoadingCircle] = useState(false);
+
     const localUser = localStorage.getItem("user")
         ? JSON.parse(localStorage.getItem("user")).user
         : {
@@ -51,8 +53,10 @@ const Profile = () => {
         e.preventDefault();
         if (newPassword !== repPassword) {
             alert("Passwords do not match");
+            return;
         }
         else {
+            setLoadingCircle(true);
             const token = JSON.parse(localStorage.getItem("user")).token;
             const config = {
                 headers: {
@@ -71,7 +75,14 @@ const Profile = () => {
                 .catch(err => {
                     console.log(err);
                     alert("Password not updated");
+                }).finally(() => {
+                setLoadingCircle(false);
+                setUserData({
+                    oldPassword: "",
+                    newPassword: "",
+                    repPassword: ""
                 });
+            });
         }
     }
 
@@ -95,10 +106,13 @@ const Profile = () => {
                         <input name="oldPassword" className="Input" type="password"
                                placeholder="Enter your old password" onChange={onChange} value={oldPassword}/>
                         <input name="newPassword" className="Input" type="password"
-                               placeholder="Enter your new password" onChange={onChange} value={newPassword}/>
+                               placeholder="Enter your new password" onChange={onChange} value={newPassword}
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Minimum 8 characters, one uppercase and lowercase letter, and a number"
+                        />
                         <input name="repPassword" className="Input" type="password" placeholder="Repeat password"
                                onChange={onChange} value={repPassword}/>
-                        <button>Update password</button>
+                        <button className="profileBtn">{ loadingCircle ? <div className="loading-circle"></div> : <>Update password</> }</button>
                     </form>
                 </div>
             </>

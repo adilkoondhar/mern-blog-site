@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -6,7 +7,7 @@ const port = 3000;
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-mongoose.connect('mongodb://localhost:27017/mernBlogDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASE_API, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 

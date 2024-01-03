@@ -1,8 +1,11 @@
 import React from "react";
 import "../css/navheader.css";
+import {useNavigate} from "react-router-dom";
+
 const Navheader = (props) => {
+    const navigate = useNavigate();
     const onclick = () => {
-        props.refresh();
+        navigate('/');
     }
     return (
         <div className="NavHeader">

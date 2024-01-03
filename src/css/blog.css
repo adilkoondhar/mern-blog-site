@@ -26,12 +26,6 @@
     text-align: left;
 }
 
-.blogHeader img  {
-    width: 25%;
-    float: left;
-    margin-left: 30px;
-}
-
 .blogFooter {
     display: inline-block;
     margin-left: 40px;
@@ -62,10 +56,19 @@
     font-weight: 500;   /* Match h6 font weight */
     line-height: 1.5rem; /* Match h6 line height */
     margin-top: 1rem;   /* Adjust as needed */
-    margin-bottom: 1rem; /* Adjust as needed */
+    margin-left: 5%;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
     cursor: default; /* Indicate uneditable state */
+}
+
+.h3Ele {
+    line-height: 1.5rem; /* Match h6 line height */
+    margin-top: 1rem;   /* Adjust as needed */
+    margin-bottom: 1rem; /* Adjust as needed */
+    margin-left: 37%;
+    width: 90%;
+    word-wrap: break-word;
 }
 
 .pInput {
@@ -73,9 +76,30 @@
     font-weight: 400; /* Match paragraph font weight */
     line-height: 1.5rem; /* Match paragraph line height */
     margin-top: 0.8rem; /* Adjust as needed */
-    margin-bottom: 1rem; /* Adjust as needed */
     margin-left: 40px;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
     cursor: default; /* Indicate uneditable state */
+    width: 90%;
+}
+
+.pEle {
+    line-height: 1.5rem; /* Comfortable line height */
+    margin-top: 0.8rem; /* Adjust vertical spacing as needed */
+    margin-bottom: 1rem;
+    margin-left: 40px; /* Indent slightly for visual clarity */
+    max-width: 90%; /* Occupy 90% of available width, maintaining responsiveness */
+    word-wrap: break-word;
+}
+
+.blogA {
+    margin-left: 37%;
+}
+
+
+.blogImg {
+    border-radius: 5%;
+    width: 25%;
+    float: left;
+    margin-left: 30px;
 }

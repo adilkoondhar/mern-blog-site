@@ -34,7 +34,7 @@ const Blog = (props) => {
             },
         };
         // post request to update post
-        axios.post(process.env.REACT_APP_BACKEND_API + "/user/posts/${props.title}", {
+        axios.post(process.env.REACT_APP_BACKEND_API + `/user/posts/${props.title}`, {
             title: title,
             content: content
         }, config)
@@ -59,7 +59,7 @@ const Blog = (props) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        axios.delete(process.env.REACT_APP_BACKEND_API + "/user/posts/${props.title}", config)
+        axios.delete(process.env.REACT_APP_BACKEND_API + `/user/posts/${props.title}`, config)
             .then(res => {
                 console.log(res);
                 props.refresh();
@@ -70,7 +70,9 @@ const Blog = (props) => {
     }
 
     const seeMore = (e) => {
-        props.onlyUser(props.email);
+        // props.onlyUser(props.email);
+        const mail = props.email.replace("@", "%40");
+        navigate(`/posts/${mail}`);
     }
 
     const storedUser = localStorage.getItem("user");
@@ -79,10 +81,10 @@ const Blog = (props) => {
         <div className="Blog">
             <div className="blogHeader">
                 <img className="blogImg" src={image} alt="blogImage"/>
-                <input className="h6Input" type="text" onChange={onChange} name="title" disabled={check} value={title}/>
+                {check ? <h3 className="h3Ele">{title}</h3> : <input className="h6Input" type="text" onChange={onChange} name="title" disabled={check} value={title}/>}
                 <p className="blogA">{props.writer + " - " + props.date}</p>
             </div>
-            <input className="pInput" type="text" onChange={onChange} name="content" disabled={check} value={content}/>
+            {check ? <p className="pEle" >{content}</p> : <textarea className="pInput" onChange={onChange} name="content" disabled={check} value={content}/>}
             <div className="blogFooter">
                 {storedUser ? <>
             <a onClick={deletePost}>Delete</a>

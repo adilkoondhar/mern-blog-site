@@ -80,6 +80,9 @@ const Signup = () => {
                     placeholder="Password"
                     value={password}
                     onChange={onChange}
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Minimum 8 characters, one uppercase and lowercase letter, and a number"
                 />
                 <input
                     name="repPass"

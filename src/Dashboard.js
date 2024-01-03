@@ -12,19 +12,10 @@ const Dashboard = () => {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    const [specificUser, setSpecificUser] = useState(false);
-
-    const [tempUser, setTempUser] = useState("");
-
     const [back, setBack] = useState(false);
 
-    function aUser(user) {
-        setSpecificUser(true);
-        setTempUser(user);
-        setIsLoading(true);
-        setBack(true);
-        setBlogs([]);
-    }
+    const [loadingCircle, setLoadingCircle] = useState(false);
+
 
     function refreshPage() {
         setIsLoading(true);
@@ -50,26 +41,12 @@ const Dashboard = () => {
                         console.log(err);
                         setIsLoading(false); // Handle error state
                     });
-            } else if (specificUser) {
-                axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts/${tempUser}")
-                    .then(res => {
-                        setBlogs(res.data);
-                        setIsLoading(false);
-                        setSpecificUser(false);
-                        setBack(true);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        setIsLoading(false); // Handle error state
-                    });
-            }
-            else {
+            } else {
                 axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
                     .then(res => {
                         setBlogs(res.data);
                         setIsLoading(false);
                         setBack(false);
-                        setSpecificUser(false);
                     })
                     .catch(err => {
                         console.log(err);
@@ -92,6 +69,14 @@ const Dashboard = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+
+        if (title === "" || content === "") {
+            alert("Please fill all the fields");
+            return;
+        }
+
+        setLoadingCircle(true);
+
         const token = JSON.parse(localStorage.getItem("user")).token;
         const config = {
             headers: {
@@ -110,7 +95,13 @@ const Dashboard = () => {
             .catch(err => {
                 console.log(err);
                 alert("Blog not published");
+            }).finally(() => {
+            setLoadingCircle(false);
+            setBlogData({
+                title: "",
+                content: ""
             });
+        });
 
     }
 
@@ -119,16 +110,18 @@ const Dashboard = () => {
             <Navbar name={"Login"} red={"/login"}/>
             <Navheader name={"Dashboard"} back={back} refresh={refreshPage}/>
             {storedUser && <>
-            <form className="dashboardForm" onSubmit={onSubmit}>
-                <input name="title" className="Input" type="text" placeholder="Enter your name" onChange={onChange}/>
-                <textarea name="content" placeholder="Take a note..." rows={5} onChange={onChange}/>
-                <button>Publish blog</button>
-            </form> </>}
+                <form className="dashboardForm" onSubmit={onSubmit}>
+                    <input name="title" className="Input" type="text" placeholder="Title"
+                           value={title} onChange={onChange}/>
+                    <textarea name="content" placeholder="Take a note..." rows={5} value={content} onChange={onChange}/>
+                    <button className="dashboardBtn"> { loadingCircle ? <div className="loading-circle"></div> : <>Publish blog</>}</button>
+                </form>
+            </>}
             <h3 className="dashboardH3">My Blogs</h3>
 
             {blogs.map((blog, index) => {
                 return (
-                    <Blog key={index} back={back} onlyUser={aUser} title={blog.title} writer={blog.user} content={blog.content} date={blog.date} email={blog.email} refresh={refreshPage}/>
+                    <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content} date={blog.date.substring(0, 10)} email={blog.email} refresh={refreshPage}/>
                 );
             })}
         </>
