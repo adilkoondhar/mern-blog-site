@@ -64,6 +64,7 @@ const Profile = () => {
                 },
             };
             axios.post(process.env.REACT_APP_BACKEND_API + "/user/update", {
+                oldPassword: oldPassword,
                 password: newPassword,
                 firstName: firstName,
                 lastName: lastName,

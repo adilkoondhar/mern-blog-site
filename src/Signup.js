@@ -7,6 +7,8 @@ import Navheader from "./components/Navheader.js";
 import axios from "axios";
 const Signup = () => {
 
+    const [loadingCircle, setLoadingCircle] = useState(false);
+
     const [userData, setUserData] = useState({
         firstName: "",
         lastName: "",
@@ -29,6 +31,7 @@ const Signup = () => {
             toast.error("Passwords do not match");
         }
         else {
+            setLoadingCircle(true);
             axios.post(process.env.REACT_APP_BACKEND_API + "/user", {
                 firstName: firstName,
                 lastName: lastName,
@@ -43,6 +46,15 @@ const Signup = () => {
                 .catch(err => {
                     console.log(err);
                     alert("Signup failed");
+                }).finally(() => {
+                setLoadingCircle(false);
+                setUserData({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    repPass: ""
+                });
                 });
         }
     }
@@ -91,7 +103,7 @@ const Signup = () => {
                     value={repPass}
                     onChange={onChange}
                 />
-                <button type="submit">Signup</button>
+                <button className="signupBtn" type="submit">{ loadingCircle ? <div className="loading-circle"></div> : <>Signup</> }</button>
             </form>
         </>
     );

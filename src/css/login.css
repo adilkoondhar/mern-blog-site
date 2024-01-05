@@ -27,7 +27,7 @@
 
 }
 
-.loginForm button {
+.loginBtn {
     display: inline-flex;
     padding: 10px 16px;
     align-items: flex-start;
@@ -37,4 +37,29 @@
     position: relative;
     top: 60px;
     left: 190px;
+}
+
+.loginBtn:hover {
+    /* Transform the button on hover */
+    transform: scale(1.1); /* Example: Scale up slightly */
+
+    /* Add other visual changes as desired */
+    background-color: #663de8; /* Example: Darken the background */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Example: Add a shadow */
+}
+
+.loading-circle {
+    display: block; /* Initially hidden */
+    width: 20px; /* Adjust as needed */
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #9b99a3; /* #7749F8 Match button color */
+    border-top-color: transparent; /* Create spinner effect */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

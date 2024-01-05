@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
+    const [loadingCircle, setLoadingCircle] = useState(false);
+
     const navigate = useNavigate();
 
     const [userData, setUserData] = useState({
@@ -22,6 +24,7 @@ const Login = () => {
 
     const onSubmit = e => {
         e.preventDefault();
+        setLoadingCircle(true);
         axios.post(process.env.REACT_APP_BACKEND_API + "/login", {
             email: email,
             password: password
@@ -34,7 +37,13 @@ const Login = () => {
             .catch(err => {
                 console.log(err);
                 alert("Login failed");
+            }).finally(() => {
+            setLoadingCircle(false);
+            setUserData({
+                email: "",
+                password: ""
             });
+        });
     }
 
     return (
@@ -44,7 +53,7 @@ const Login = () => {
             <form className="loginForm" onSubmit={onSubmit}>
                 <input name="email" type="email" placeholder="Enter your email" value={email} onChange={onChange}/>
                 <input name="password" type="password" placeholder="Enter your password" value={password} onChange={onChange}/>
-                <button>Login</button>
+                <button className="loginBtn">{ loadingCircle ? <div className="loading-circle"></div> : <>Login</> }</button>
             </form>
         </>
     );
