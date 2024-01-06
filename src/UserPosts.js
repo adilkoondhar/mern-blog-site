@@ -46,7 +46,7 @@ const UserPosts = () => {
             {blogs.map((blog, index) => {
                 return (
                     <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content}
-                          date={blog.date} email={blog.email}/>
+                          date={blog.date.substring(0, 10)} email={blog.email}/>
                 );
             })}
         </>
