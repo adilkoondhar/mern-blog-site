@@ -12,29 +12,35 @@
     gap: 4px;
     color: #FFF;
     cursor: pointer;
-}
-.Navbar a, .btn {
-    color: #FFF;
-    font-family: Inter, serif;
-    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 23px;
     font-style: normal;
     font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.69px;
+}
+.btn {
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-style: normal;
     line-height: normal;
     letter-spacing: -0.24px;
     text-decoration: none;
     cursor: pointer;
+    font-weight: 400;
 }
 
 .prof {
     color: #FFF;
-    font-family: Inter, serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     font-style: normal;
-    font-weight: 700;
     line-height: normal;
     letter-spacing: -0.24px;
     text-decoration: none;
     cursor: pointer;
     position: relative;
     left: 35%;
+    font-weight: 400;
 }

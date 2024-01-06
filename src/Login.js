@@ -51,8 +51,8 @@ const Login = () => {
             <Navbar name={"Signup"} red={"/signup"}/>
             <Navheader name={"Login"}/>
             <form className="loginForm" onSubmit={onSubmit}>
-                <input name="email" type="email" placeholder="Enter your email" value={email} onChange={onChange}/>
-                <input name="password" type="password" placeholder="Enter your password" value={password} onChange={onChange}/>
+                <input name="email" type="email" placeholder="Email" value={email} onChange={onChange}/>
+                <input name="password" type="password" placeholder="Password" value={password} onChange={onChange}/>
                 <button className="loginBtn">{ loadingCircle ? <div className="loading-circle"></div> : <>Login</> }</button>
             </form>
         </>

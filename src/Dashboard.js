@@ -23,37 +23,37 @@ const Dashboard = () => {
         setBack(false);
     }
 
-        if (isLoading) {
-            if (storedUser) {
-                const token = JSON.parse(localStorage.getItem("user")).token;
-                const config = {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                };
-                axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
-                    .then(res => {
-                        setBlogs(res.data);
-                        setIsLoading(false);
-                        setBack(false);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        setIsLoading(false); // Handle error state
-                    });
-            } else {
-                axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
-                    .then(res => {
-                        setBlogs(res.data);
-                        setIsLoading(false);
-                        setBack(false);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        setIsLoading(false); // Handle error state
-                    });
-            }
+    if (isLoading) {
+        if (storedUser) {
+            const token = JSON.parse(localStorage.getItem("user")).token;
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
+                .then(res => {
+                    setBlogs(res.data);
+                    setIsLoading(false);
+                    setBack(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setIsLoading(false); // Handle error state
+                });
+        } else {
+            axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
+                .then(res => {
+                    setBlogs(res.data);
+                    setIsLoading(false);
+                    setBack(false);
+                })
+                .catch(err => {
+                    console.log(err);
+                    setIsLoading(false); // Handle error state
+                });
         }
+    }
 
 
     const [blogData, setBlogData] = useState({
@@ -61,10 +61,10 @@ const Dashboard = () => {
         content: ""
     });
 
-    const { title, content } = blogData;
+    const {title, content} = blogData;
 
     const onChange = e => {
-        setBlogData({ ...blogData, [e.target.name]: e.target.value });
+        setBlogData({...blogData, [e.target.name]: e.target.value});
     }
 
     const onSubmit = e => {
@@ -105,23 +105,41 @@ const Dashboard = () => {
 
     }
 
+    const now = new Date();
+    const currentHour = now.getHours();
+
+    let greeting;
+
+    if (currentHour >= 4 && currentHour < 12) {
+        greeting = "Good morning";
+    } else if (currentHour >= 12 && currentHour < 18) {
+        greeting = "Good afternoon";
+    } else if (currentHour >= 18 && currentHour < 22) {
+        greeting = "Good evening";
+    } else {
+        greeting = "Good night";
+    }
+
     return (
         <>
             <Navbar name={"Login"} red={"/login"}/>
-            <Navheader name={"Dashboard"} back={back} refresh={refreshPage}/>
-            {storedUser && <>
-                <form className="dashboardForm" onSubmit={onSubmit}>
-                    <input name="title" className="Input" type="text" placeholder="Title"
-                           value={title} onChange={onChange}/>
-                    <textarea name="content" placeholder="Take a note..." rows={5} value={content} onChange={onChange}/>
-                    <button className="dashboardBtn"> { loadingCircle ? <div className="loading-circle"></div> : <>Publish blog</>}</button>
-                </form>
-            </>}
-            <h3 className="dashboardH3">My Blogs</h3>
+            {storedUser || back ? <Navheader name={"Dashboard"} back={back} refresh={refreshPage}/> : <Navheader name={`${greeting} Readers!`} back={back} refresh={refreshPage}/>}
+            {storedUser ? <>
+                    <form className="dashboardForm" onSubmit={onSubmit}>
+                        <input name="title" className="Input" type="text" placeholder="Title"
+                               value={title} onChange={onChange}/>
+                        <textarea name="content" placeholder="Take a note..." rows={5} value={content} onChange={onChange}/>
+                        <button className="dashboardBtn"> {loadingCircle ?
+                            <div className="loading-circle"></div> : <>Publish blog</>}</button>
+                    </form>
+                    <h3 className="dashboardH3">My Blogs</h3>
+                </> :
+                <h3 className="dashboardH3">All Blogs</h3>}
 
             {blogs.map((blog, index) => {
                 return (
-                    <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content} date={blog.date.substring(0, 10)} email={blog.email} refresh={refreshPage}/>
+                    <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content}
+                          date={blog.date.substring(0, 10)} email={blog.email} refresh={refreshPage}/>
                 );
             })}
         </>

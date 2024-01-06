@@ -9,7 +9,7 @@ const Navheader = (props) => {
     }
     return (
         <div className="NavHeader">
-            { !props.back ? <h3>{props.name}</h3> : <h3 className="goBack" onClick={onclick}>Go back</h3> }
+            { !props.back ? <h1 className="navH1">{props.name}</h1> : <h1 className="goBack" onClick={onclick}>&lt; Go back</h1> }
         </div>
     );
 }

@@ -5,6 +5,8 @@ import "./css/dashboard.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
 import Blog from "./components/Blog.js";
+import img1 from "./images/img1.png";
+import "./css/userPosts.css";
 
 const UserPosts = () => {
     const { user } = useParams();
@@ -32,12 +34,19 @@ const UserPosts = () => {
     return (
         <>
             <Navbar name={"Login"} red={"/login"}/>
-            <Navheader name={"Dashboard"} back={back} />
-            {!isLoading && <h3 className="dashboardH3">{author}'s blogs</h3>}
+            <Navheader name={"Dashboard"} back={back}/>
+            {!isLoading && <h3 className="dashboardH3">All from {author}</h3>}
+
+            <div className="authorDetails">
+                <a href="mailto:{mail}">{mail}</a>
+                <h1>{author}</h1>
+                <img src={img1} alt="img1"/>
+            </div>
 
             {blogs.map((blog, index) => {
                 return (
-                    <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content} date={blog.date} email={blog.email}/>
+                    <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content}
+                          date={blog.date} email={blog.email}/>
                 );
             })}
         </>

@@ -1,6 +1,6 @@
 .Blog {
     display: flex;
-    width: 830px;
+    width: 930px;
     padding: 24px;
     flex-direction: column;
     align-items: flex-start;
@@ -11,14 +11,6 @@
     margin-left: 10%;
     margin-bottom: 20px;
 }
-
-/*.blogHeader {*/
-/*    display: flex;*/
-/*    padding: 0px 103px;*/
-/*    flex-direction: column;*/
-/*    align-items: flex-start;*/
-/*    gap: 8px;*/
-/*}*/
 
 .blogHeader {
     width: 50%;
@@ -31,15 +23,11 @@
     margin-left: 40px;
 }
 
-
 .blogFooter a {
     cursor: pointer;
-}
-
-.blogFooter a {
     text-decoration: none;
     color: #7749F8;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -49,51 +37,76 @@
 
 .blogP {
     margin-left: 40px;
+    font-family: 'Inter', sans-serif;
 }
 
-.h6Input {
-    font-size: 1.125rem; /* Match h6 font size */
-    font-weight: 500;   /* Match h6 font weight */
-    line-height: 1.5rem; /* Match h6 line height */
+.h4Input {
     margin-top: 1rem;   /* Adjust as needed */
-    margin-left: 5%;
+    margin-left: 1.5rem;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
     cursor: default; /* Indicate uneditable state */
+    font-family: 'Inter', sans-serif;
+    color: #212529;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
-.h3Ele {
-    line-height: 1.5rem; /* Match h6 line height */
-    margin-top: 1rem;   /* Adjust as needed */
-    margin-bottom: 1rem; /* Adjust as needed */
+.h4Ele {
+    margin-top: 0;   /* Adjust as needed */
+    margin-bottom: 0; /* Adjust as needed */
     margin-left: 37%;
     width: 90%;
     word-wrap: break-word;
+    font-family: 'Inter', sans-serif;
+    color: #212529;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .pInput {
-    font-size: 1rem; /* Match paragraph font size */
-    font-weight: 400; /* Match paragraph font weight */
-    line-height: 1.5rem; /* Match paragraph line height */
-    margin-top: 0.8rem; /* Adjust as needed */
+    margin-top: 0; /* Adjust as needed */
     margin-left: 40px;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
     cursor: default; /* Indicate uneditable state */
     width: 90%;
+    font-family: 'Inter', sans-serif;
+    color: #6C757D;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
 }
 
 .pEle {
-    line-height: 1.5rem; /* Comfortable line height */
-    margin-top: 0.8rem; /* Adjust vertical spacing as needed */
-    margin-bottom: 1rem;
+    margin-top: 0; /* Adjust vertical spacing as needed */
+    margin-bottom: 0;
     margin-left: 40px; /* Indent slightly for visual clarity */
     max-width: 90%; /* Occupy 90% of available width, maintaining responsiveness */
     word-wrap: break-word;
+    font-family: 'Inter', sans-serif;
+    color: #6C757D;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 175% */
 }
 
 .blogA {
     margin-left: 37%;
+    font-family: 'Inter', sans-serif;
+    color: #6C757D;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 

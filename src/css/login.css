@@ -21,9 +21,15 @@
     background: #FFF;
     box-shadow: 0 0 0 3px rgba(102, 16, 242, 0.15);
     position: relative;
-    left: 30%;
-    top: 20%;
-    margin-bottom: 0.6rem;
+    left: 23%;
+    top: 22%;
+    margin-bottom: 1.2rem;
+    color: #ADB5BD;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
 
 }
 
@@ -35,8 +41,14 @@
     border-radius: 6px;
     background: #7749F8;
     position: relative;
-    top: 60px;
+    top: 55px;
     left: 190px;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 112.5% */
 }
 
 .loginBtn:hover {

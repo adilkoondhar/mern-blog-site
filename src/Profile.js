@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
 import image from "./images/img1.png";
 import {Navigate} from "react-router-dom";
+import penFill from "./icons/pen-fill.svg";
+import penFill0 from "./icons/pen-fill0.svg";
 
 
 const Profile = () => {
@@ -95,25 +97,33 @@ const Profile = () => {
                 <Navbar name={"Logout"} red={"/logout"}/>
                 <Navheader name={"Profile"}/>
                 <div className="profileDiv">
-                    <img className="blogImg" src={image} alt="imageOne"/>
+                    <div className="imageDiv">
+                    <img className="profileImg" src={image} alt="imageOne"/>
+                    <img className="profileEditIcon profileIcon" src={penFill0}/>
+                    </div>
                     <br/>
                     <div className="profileHeader">
-                        <input className="h4Input" type="text" onChange={onChange} name="firstName" disabled={check} value={firstName}/>
-                        <input className="h4Input" type="text" onChange={onChange} name="lastName" disabled={check} value={lastName}/>
-                        <p onClick={onClick}>Edit</p>
+                        {check ? <h4>{firstName} {lastName}</h4> : <>
+                            <input className="h4Input" type="text" onChange={onChange} name="firstName" disabled={check}
+                                   value={firstName}/>
+                            <input className="h4Input" type="text" onChange={onChange} name="lastName" disabled={check}
+                                   value={lastName}/>
+                        </>}
+                        <img className="profileEditIcon" onClick={onClick} src={penFill}/>
                     </div>
                     <h4>Password</h4>
                     <form className="profileForm" onSubmit={onSubmit}>
                         <input name="oldPassword" className="Input" type="password"
-                               placeholder="Enter your old password" onChange={onChange} value={oldPassword}/>
+                               placeholder="Old password" onChange={onChange} value={oldPassword}/>
                         <input name="newPassword" className="Input" type="password"
-                               placeholder="Enter your new password" onChange={onChange} value={newPassword}
+                               placeholder="New password" onChange={onChange} value={newPassword}
                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                title="Minimum 8 characters, one uppercase and lowercase letter, and a number"
                         />
                         <input name="repPassword" className="Input" type="password" placeholder="Repeat password"
                                onChange={onChange} value={repPassword}/>
-                        <button className="profileBtn">{ loadingCircle ? <div className="loading-circle"></div> : <>Update password</> }</button>
+                        <button className="profileBtn">{loadingCircle ?
+                            <div className="loading-circle"></div> : <>Update password</>}</button>
                     </form>
                 </div>
             </>

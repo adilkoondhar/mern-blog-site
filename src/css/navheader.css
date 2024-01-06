@@ -9,10 +9,9 @@
     background: #FFF;
     height: 3rem;
 }
-.NavHeader h3 {
+.navH1 {
     color: #343A40;
-    /* Bold/H1 Heading */
-    font-family: Inter, sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
@@ -22,4 +21,11 @@
 
 .goBack {
     cursor: pointer;
+    color: #7749F8;
+    font-family: 'Inter', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.8px;
 }

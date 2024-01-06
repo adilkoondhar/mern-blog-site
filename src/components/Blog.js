@@ -81,8 +81,8 @@ const Blog = (props) => {
         <div className="Blog">
             <div className="blogHeader">
                 <img className="blogImg" src={image} alt="blogImage"/>
-                {check ? <h3 className="h3Ele">{title}</h3> : <input className="h6Input" type="text" onChange={onChange} name="title" disabled={check} value={title}/>}
-                <p className="blogA">{props.writer + " - " + props.date}</p>
+                {check ? <h4 className="h4Ele">{title}</h4> : <input className="h4Input" type="text" onChange={onChange} name="title" disabled={check} value={title}/>}
+                <h6 className="blogA">{props.writer + " - " + props.date}</h6>
             </div>
             {check ? <p className="pEle" >{content}</p> : <textarea className="pInput" onChange={onChange} name="content" disabled={check} value={content}/>}
             <div className="blogFooter">

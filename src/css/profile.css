@@ -23,7 +23,12 @@
     background: #7749F8;
     position: relative;
     top: 10px;
-    left: 10px;
+    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; /* 112.5% */
 }
 
 .profileForm input {
@@ -37,25 +42,32 @@
     background: #FFF;
     box-shadow: 0 0 0 3px rgba(102, 16, 242, 0.15);
     position: relative;
-    left: 10px;
+    left: 1px;
     top: 10px;
-    margin-bottom: 0.6rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.9rem;
+    color: #ADB5BD;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
 }
 
 .profileDiv h4 {
     color: #212529;
-
-    /* Semi-Bold / H4 Heading */
-    font-family: Inter;
-    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin: 0 0 0 10px;
+    display: inline-block;
+    margin: 0.5rem 1rem 0 0;
+    cursor: default;
 }
 
-.profileDiv img {
-    width: 300px;
+.profileImg {
+    width: 230px;
     /*height: 300px;*/
     flex-shrink: 0;
     border-radius: 30px;
@@ -63,16 +75,27 @@
     /*margin-bottom: 10px;*/
 }
 
+.profileEditIcon {
+    cursor: pointer;
+}
+
+.imageDiv {
+    position: relative;
+}
+
+.profileIcon {
+    position: absolute;
+    right: 10px;
+    top: 165px;
+}
+
 .h4Input {
-    font-family: inherit; /* Inherit font from parent element */
-    font-size: 1.5rem; /* Match h4 font size */
-    font-weight: bold; /* Match h4 font weight */
-    margin: 0; /* Remove default margin */
+    margin: 0.5rem 0 0 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
-    cursor: default; /* Indicate uneditable state */
     width: 100px;
+    cursor: text;
 }
 
 .profileHeader p {
