@@ -13,7 +13,7 @@
 }
 
 .blogHeader {
-    width: 50%;
+    width: 83%;
     margin-top: 10px;
     text-align: left;
 }
@@ -41,23 +41,23 @@
 }
 
 .h4Input {
-    margin-top: 1rem;   /* Adjust as needed */
-    margin-left: 1.5rem;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
-    cursor: default; /* Indicate uneditable state */
+    cursor: text; /* Indicate uneditable state */
     font-family: 'Inter', sans-serif;
-    color: #212529;
+    color: #6C757D;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    margin: 0.5rem 0 0 1.9rem; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 76%;
+    resize: none; /* Remove default resize handle */
 }
 
 .h4Ele {
-    margin-top: 0;   /* Adjust as needed */
-    margin-bottom: 0; /* Adjust as needed */
-    margin-left: 37%;
+    margin: 0.5rem 0 0 11rem;
     width: 90%;
     word-wrap: break-word;
     font-family: 'Inter', sans-serif;
@@ -73,7 +73,7 @@
     margin-left: 40px;
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
-    cursor: default; /* Indicate uneditable state */
+    cursor: text; /* Indicate uneditable state */
     width: 90%;
     font-family: 'Inter', sans-serif;
     color: #6C757D;
@@ -81,6 +81,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 28px; /* 175% */
+    resize: none;
 }
 
 .pEle {
@@ -90,29 +91,28 @@
     max-width: 90%; /* Occupy 90% of available width, maintaining responsiveness */
     word-wrap: break-word;
     font-family: 'Inter', sans-serif;
-    color: #6C757D;
+    color: #232526;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px; /* 175% */
+    white-space: pre-wrap;
 }
 
 .blogA {
-    margin-left: 37%;
     font-family: 'Inter', sans-serif;
-    color: #6C757D;
+    color: #232526;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    margin-top: 1rem;
-    margin-bottom: 0;
+    margin: 1.7rem 0 0 11.05rem;
 }
 
 
 .blogImg {
     border-radius: 5%;
-    width: 25%;
+    width: 15%;
     float: left;
     margin-left: 30px;
 }

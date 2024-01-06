@@ -22,14 +22,6 @@ const Profile = () => {
             image: ""
         };
 
-    // const [user, setUser] = useState({
-    //     firstName: "John",
-    //     lastName: "Doe",
-    //     email: "name@name.com",
-    //     password: "",
-    //     img: "abc"
-    // });
-
     const { firstName: firstNames, lastName: lastNames, email } = localUser;
 
     const [check, setCheck] = useState(true)
@@ -80,10 +72,13 @@ const Profile = () => {
                     alert("Password not updated");
                 }).finally(() => {
                 setLoadingCircle(false);
-                setUserData({
+                setUserData(prevState => {
+                    return {
+                    ...prevState,
                     oldPassword: "",
                     newPassword: "",
                     repPassword: ""
+                    }
                 });
             });
         }
@@ -104,9 +99,9 @@ const Profile = () => {
                     <br/>
                     <div className="profileHeader">
                         {check ? <h4>{firstName} {lastName}</h4> : <>
-                            <input className="h4Input" type="text" onChange={onChange} name="firstName" disabled={check}
+                            <input style={{width: `${firstName.length * 18}px`}} className="h4ProfileInput" type="text" onChange={onChange} name="firstName" disabled={check}
                                    value={firstName}/>
-                            <input className="h4Input" type="text" onChange={onChange} name="lastName" disabled={check}
+                            <input style={{width: `${lastName.length * 17}px`}} className="h4ProfileInput" type="text" onChange={onChange} name="lastName" disabled={check}
                                    value={lastName}/>
                         </>}
                         <img className="profileEditIcon" onClick={onClick} src={penFill}/>

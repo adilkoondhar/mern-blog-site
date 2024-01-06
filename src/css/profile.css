@@ -46,6 +46,15 @@
     top: 10px;
     margin-top: 0.3rem;
     margin-bottom: 0.9rem;
+    color: #232526;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+.profileForm input::placeholder {
     color: #ADB5BD;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -62,7 +71,7 @@
     font-weight: 600;
     line-height: normal;
     display: inline-block;
-    margin: 0.5rem 1rem 0 0;
+    margin: 0 1rem 0 0;
     cursor: default;
 }
 
@@ -86,16 +95,21 @@
 .profileIcon {
     position: absolute;
     right: 10px;
-    top: 165px;
+    top: 180px;
 }
 
-.h4Input {
-    margin: 0.5rem 0 0 0; /* Remove default margin */
+.h4ProfileInput {
+    margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
     border: none; /* Remove border */
     background-color: transparent; /* Make background transparent */
-    width: 100px;
     cursor: text;
+    font-family: 'Inter', sans-serif;
+    color: #6C757D;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .profileHeader p {

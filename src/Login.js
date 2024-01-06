@@ -3,7 +3,7 @@ import axios from "axios";
 import "./css/login.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
-import { useNavigate } from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 const Login = () => {
 
@@ -46,6 +46,9 @@ const Login = () => {
         });
     }
 
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
     return (
         <>
             <Navbar name={"Signup"} red={"/signup"}/>
@@ -56,7 +59,11 @@ const Login = () => {
                 <button className="loginBtn">{ loadingCircle ? <div className="loading-circle"></div> : <>Login</> }</button>
             </form>
         </>
-    );
+    ); } else {
+        return (
+            <Navigate to={'/'} />
+        );
+    }
 }
 
 export default Login;

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 import "./css/signup.css";
 import Navbar from "./components/Navbar.js";
@@ -59,6 +59,9 @@ const Signup = () => {
         }
     }
 
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
     return (
         <>
             <Navbar name={"Login"} red={"/login"}/>
@@ -70,7 +73,8 @@ const Signup = () => {
                     placeholder="First Name"
                     value={firstName}
                     onChange={onChange}
-
+                    maxLength={20}
+                    required
                 />
                 <input
                     name="lastName"
@@ -78,6 +82,8 @@ const Signup = () => {
                     placeholder="Last Name"
                     value={lastName}
                     onChange={onChange}
+                    maxLength={20}
+                    required
                 />
                 <input
                     name="email"
@@ -106,7 +112,11 @@ const Signup = () => {
                 <button className="signupBtn" type="submit">{ loadingCircle ? <div className="loading-circle"></div> : <>Signup</> }</button>
             </form>
         </>
-    );
+    ); } else {
+        return (
+            <Navigate to={'/'} />
+        );
+    }
 };
 
 export default Signup;

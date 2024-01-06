@@ -1,6 +1,6 @@
 .dashboardForm {
     width: 881px;
-    height: 330px;
+    height: max-content;
     flex-shrink: 0;
     fill: #FFF;
     filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.12));
@@ -8,17 +8,17 @@
     position: relative;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
     margin-top: 5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
 }
 .dashboardBtn {
-    display: inline-flex;
+    display: flex;
     padding: 10px 16px;
     align-items: flex-start;
     gap: 8px;
     border-radius: 6px;
     background: #7749F8;
-    position: relative;
-    top: 70px;
-    left: 43px;
+    margin-left: 2.7rem;
     transition: all 0.3s ease-in-out;
     color: #FFF;
     font-family: 'Inter', sans-serif;
@@ -70,6 +70,16 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    color: #232526;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+    resize: none;
+}
+
+.dashboardForm input::placeholder, .dashboardForm textarea::placeholder {
     color: #ADB5BD;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -88,4 +98,8 @@
     font-weight: 600;
     line-height: normal;
     margin-left: 10%;
+}
+
+.content {
+    white-space: pre-wrap;
 }

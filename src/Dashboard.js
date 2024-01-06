@@ -126,9 +126,9 @@ const Dashboard = () => {
             {storedUser || back ? <Navheader name={"Dashboard"} back={back} refresh={refreshPage}/> : <Navheader name={`${greeting} Readers!`} back={back} refresh={refreshPage}/>}
             {storedUser ? <>
                     <form className="dashboardForm" onSubmit={onSubmit}>
-                        <input name="title" className="Input" type="text" placeholder="Title"
+                        <input maxLength={75} name="title" className="Input" type="text" placeholder="Title"
                                value={title} onChange={onChange}/>
-                        <textarea name="content" placeholder="Take a note..." rows={5} value={content} onChange={onChange}/>
+                        <textarea maxLength={3000} name="content" placeholder="What's in your mind?" rows={content.split('\n').length + 1} value={content} onChange={onChange}/>
                         <button className="dashboardBtn"> {loadingCircle ?
                             <div className="loading-circle"></div> : <>Publish blog</>}</button>
                     </form>

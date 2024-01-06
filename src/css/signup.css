@@ -41,6 +41,15 @@ body {
     background: #FFF;
     box-shadow: 0 0 0 3px rgba(102, 16, 242, 0.15);
     margin: 1rem auto;
+    color: #232526;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+.signupForm input::placeholder {
     color: #ADB5BD;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
