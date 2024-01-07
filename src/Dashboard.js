@@ -101,6 +101,7 @@ const Dashboard = () => {
                 title: "",
                 content: ""
             });
+            refreshPage();
         });
 
     }
