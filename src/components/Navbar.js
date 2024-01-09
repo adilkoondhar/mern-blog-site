@@ -6,6 +6,7 @@ const Navbar = (props) => {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.removeItem("user");
+        localStorage.removeItem("profileImage");
         toast.success("Logged out successfully");
         navigate("/login");
     }

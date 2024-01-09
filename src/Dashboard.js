@@ -4,6 +4,7 @@ import "./css/dashboard.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
 import Blog from "./components/Blog.js";
+import img1 from "./images/img1.png";
 const Dashboard = () => {
 
     const storedUser = localStorage.getItem("user");
@@ -16,14 +17,13 @@ const Dashboard = () => {
 
     const [loadingCircle, setLoadingCircle] = useState(false);
 
-
     function refreshPage() {
         setIsLoading(true);
         setBlogs([]);
         setBack(false);
     }
 
-    if (isLoading) {
+    const loadAll = async () => {
         if (storedUser) {
             const token = JSON.parse(localStorage.getItem("user")).token;
             const config = {
@@ -31,30 +31,51 @@ const Dashboard = () => {
                     Authorization: `Bearer ${token}`,
                 },
             };
-            axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
+            setBlogs([]);
+            await axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
                 .then(res => {
-                    setBlogs(res.data);
-                    setIsLoading(false);
+                    res.data.map(async (blog, index) => {
+                        console.log(blog.email);
+                        await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${blog.email}`).then(res => {
+                            console.log(res.data.image);
+                            setBlogs(blogs => [...blogs, {...blog, image: res.data.image}])
+                        }).catch(err => {
+                            console.log(err);
+                        });
+                    });
                     setBack(false);
                 })
                 .catch(err => {
                     console.log(err);
-                    setIsLoading(false); // Handle error state
                 });
         } else {
-            axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
+            setBlogs([]);
+            await axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
                 .then(res => {
-                    setBlogs(res.data);
-                    setIsLoading(false);
+                    res.data.map(async (blog, index) => {
+                        console.log(blog.email);
+                        await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${blog.email}`).then(res => {
+                            console.log(res.data.image);
+                            setBlogs(blogs => [...blogs, {...blog, image: res.data.image}])
+                        }).catch(err => {
+                            console.log(err);
+                        });
+                    });
+                    // setBlogs(blogsWithImages);
+                    console.log(blogs);
                     setBack(false);
                 })
                 .catch(err => {
                     console.log(err);
-                    setIsLoading(false); // Handle error state
                 });
         }
     }
 
+    if (isLoading) {
+        setBlogs([]);
+        loadAll();
+        setIsLoading(false);
+    }
 
     const [blogData, setBlogData] = useState({
         title: "",
@@ -67,7 +88,7 @@ const Dashboard = () => {
         setBlogData({...blogData, [e.target.name]: e.target.value});
     }
 
-    const onSubmit = e => {
+    const onSubmit = async e => {
         e.preventDefault();
 
         if (title === "" || content === "") {
@@ -84,13 +105,12 @@ const Dashboard = () => {
             },
         };
 
-        axios.post(process.env.REACT_APP_BACKEND_API + "/post", {
+        await axios.post(process.env.REACT_APP_BACKEND_API + "/post", {
             title: title,
             content: content
         }, config)
             .then(res => {
                 console.log(res.data);
-                setIsLoading(true);
             })
             .catch(err => {
                 console.log(err);
@@ -140,7 +160,7 @@ const Dashboard = () => {
             {blogs.map((blog, index) => {
                 return (
                     <Blog key={index} back={back} title={blog.title} writer={blog.user} content={blog.content}
-                          date={blog.date.substring(0, 10)} email={blog.email} refresh={refreshPage}/>
+                          date={blog.date.substring(0, 10)} email={blog.email} refresh={refreshPage} pic={blog.image}/>
                 );
             })}
         </>

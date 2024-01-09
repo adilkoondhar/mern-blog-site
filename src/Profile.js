@@ -3,7 +3,7 @@ import axios from "axios";
 import "./css/profile.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
-import image from "./images/img1.png";
+import img1 from "./images/img1.png";
 import {Navigate} from "react-router-dom";
 import penFill from "./icons/pen-fill.svg";
 import penFill0 from "./icons/pen-fill0.svg";
@@ -12,6 +12,8 @@ import penFill0 from "./icons/pen-fill0.svg";
 const Profile = () => {
 
     const [loadingCircle, setLoadingCircle] = useState(false);
+
+    // const [refreshImage, setRefreshImage] = useState(true);
 
     const localUser = localStorage.getItem("user")
         ? JSON.parse(localStorage.getItem("user")).user
@@ -22,7 +24,7 @@ const Profile = () => {
             image: ""
         };
 
-    const { firstName: firstNames, lastName: lastNames, email } = localUser;
+    const { firstName: firstNames, lastName: lastNames, email, image } = localUser;
 
     const [check, setCheck] = useState(true)
     const onClick = () => {
@@ -84,6 +86,55 @@ const Profile = () => {
         }
     }
 
+    const uploadImage = (e) => {
+        const formData = new FormData();
+        formData.append("file", e.target.files[0]);
+        formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
+
+        axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`, formData).then((res) => {
+            console.log(res.data);
+            const token = JSON.parse(localStorage.getItem("user")).token;
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            };
+            // pass image and user email via axios
+
+            axios.post(process.env.REACT_APP_BACKEND_API + "/user/image", {
+                image: res.data.url,
+                email: email
+            }, config)
+                .then(res => {
+                    console.log(res.data);
+                    refreshImage();
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+
+
+    }
+
+    const [profileImage, setProfileImage] = useState(image);
+
+    const refreshImage = async () => {
+        await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${email}`)
+            .then(res => {
+                setProfileImage(res.data.image);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    refreshImage();
+
+    const onClick2 = () => {
+        document.getElementById("imageInput").click();
+    }
+
     const storedUser = localStorage.getItem("user");
 
     if (storedUser) {
@@ -93,8 +144,9 @@ const Profile = () => {
                 <Navheader name={"Profile"}/>
                 <div className="profileDiv">
                     <div className="imageDiv">
-                    <img className="profileImg" src={image} alt="imageOne"/>
-                    <img className="profileEditIcon profileIcon" src={penFill0}/>
+                        <img className="profileImg" src={profileImage} alt="Upload your image"/>
+                        <img className="profileEditIcon profileIcon" src={penFill0} onClick={onClick2}/>
+                        <input id="imageInput" type="file" onChange={uploadImage} style={{display: 'none'}}/>
                     </div>
                     <br/>
                     <div className="profileHeader">

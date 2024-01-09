@@ -90,6 +90,8 @@
 
 .imageDiv {
     position: relative;
+    width: 230px;
+    height: 230px;
 }
 
 .profileIcon {

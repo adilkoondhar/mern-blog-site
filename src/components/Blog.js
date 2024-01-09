@@ -83,10 +83,11 @@ const Blog = (props) => {
         setDeleting(!deleting);
     }
 
+
     return (
         <div className="Blog">
             <div className="blogHeader">
-                <img className="blogImg" src={image} alt="blogImage"/>
+                <img className="blogImg" src={props.pic} alt="blogImage"/>
                 {check ? <h4 className="h4Ele">{title}</h4> : <textarea maxLength={75} rows={title.split('\n').length + 1} className="h4Input" onChange={onChange} name="title" disabled={check} value={title}/>}
                 <h6 className="blogA">{props.writer + " - " + props.date}</h6>
             </div>
