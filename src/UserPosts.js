@@ -11,7 +11,6 @@ import "./css/userPosts.css";
 const UserPosts = () => {
     const { user } = useParams();
     const mail = user.replace("%40", "@");
-    console.log(mail);
 
     const [blogs, setBlogs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -23,22 +22,15 @@ const UserPosts = () => {
         await axios.get(process.env.REACT_APP_BACKEND_API + `/user/posts/${mail}`)
             .then(res => {
                 res.data.map(async (blog, index) => {
-                    console.log(blog.email);
                     await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${blog.email}`).then(res => {
-                        console.log(res.data.image);
                         setBlogs(blogs => [...blogs, {...blog, image: res.data.image}])
                         if (once) {
                             setUserImage(res.data.image);
                             setOnce(false);
                         }
-                    }).catch(err => {
-                        console.log(err);
                     });
                 });
                 setAuthor(res.data[0].user);
-            })
-            .catch(err => {
-                console.log(err);
             });
     }
 

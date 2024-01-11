@@ -30,12 +30,10 @@ const Login = () => {
             password: password
         })
             .then(res => {
-                console.log(res.data);
                 localStorage.setItem("user", JSON.stringify(res.data));
                 navigate("/");
             })
             .catch(err => {
-                console.log(err);
                 alert("Login failed");
             }).finally(() => {
             setLoadingCircle(false);

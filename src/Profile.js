@@ -66,11 +66,9 @@ const Profile = () => {
                 lastName: lastName,
             }, config)
                 .then(res => {
-                    console.log(res.data);
                     alert("Password updated");
                 })
                 .catch(err => {
-                    console.log(err);
                     alert("Password not updated");
                 }).finally(() => {
                 setLoadingCircle(false);
@@ -92,7 +90,6 @@ const Profile = () => {
         formData.append("upload_preset", process.env.REACT_APP_UPLOAD_PRESET);
 
         axios.post(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUD_NAME}/image/upload`, formData).then((res) => {
-            console.log(res.data);
             const token = JSON.parse(localStorage.getItem("user")).token;
             const config = {
                 headers: {
@@ -106,11 +103,7 @@ const Profile = () => {
                 email: email
             }, config)
                 .then(res => {
-                    console.log(res.data);
                     refreshImage();
-                })
-                .catch(err => {
-                    console.log(err);
                 });
         });
 
@@ -123,9 +116,6 @@ const Profile = () => {
         await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${email}`)
             .then(res => {
                 setProfileImage(res.data.image);
-            })
-            .catch(err => {
-                console.log(err);
             });
     }
 

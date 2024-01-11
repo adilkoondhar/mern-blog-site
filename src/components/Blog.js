@@ -38,12 +38,7 @@ const Blog = (props) => {
             title: title,
             content: content
         }, config)
-            .then(res => {
-                console.log(res.data);
-                // window.location.reload();
-            })
             .catch(err => {
-                console.log(err);
                 alert("Blog not updated");
             });
         setCheck(!check);
@@ -61,11 +56,7 @@ const Blog = (props) => {
         };
         axios.delete(process.env.REACT_APP_BACKEND_API + `/user/posts/${props.title}`, config)
             .then(res => {
-                console.log(res);
                 props.refresh();
-            })
-            .catch(err => {
-                console.log(err);
             });
     }
 

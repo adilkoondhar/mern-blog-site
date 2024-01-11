@@ -35,38 +35,23 @@ const Dashboard = () => {
             await axios.get(process.env.REACT_APP_BACKEND_API + "/user/posts", config)
                 .then(res => {
                     res.data.map(async (blog, index) => {
-                        console.log(blog.email);
                         await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${blog.email}`).then(res => {
-                            console.log(res.data.image);
                             setBlogs(blogs => [...blogs, {...blog, image: res.data.image}])
-                        }).catch(err => {
-                            console.log(err);
                         });
                     });
                     setBack(false);
-                })
-                .catch(err => {
-                    console.log(err);
                 });
         } else {
             setBlogs([]);
             await axios.get(process.env.REACT_APP_BACKEND_API + "/posts")
                 .then(res => {
                     res.data.map(async (blog, index) => {
-                        console.log(blog.email);
                         await axios.get(process.env.REACT_APP_BACKEND_API + `/user/${blog.email}`).then(res => {
-                            console.log(res.data.image);
                             setBlogs(blogs => [...blogs, {...blog, image: res.data.image}])
-                        }).catch(err => {
-                            console.log(err);
                         });
                     });
                     // setBlogs(blogsWithImages);
-                    console.log(blogs);
                     setBack(false);
-                })
-                .catch(err => {
-                    console.log(err);
                 });
         }
     }
@@ -109,11 +94,7 @@ const Dashboard = () => {
             title: title,
             content: content
         }, config)
-            .then(res => {
-                console.log(res.data);
-            })
             .catch(err => {
-                console.log(err);
                 alert("Blog not published");
             }).finally(() => {
             setLoadingCircle(false);
