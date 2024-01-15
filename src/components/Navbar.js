@@ -26,8 +26,10 @@ const Navbar = (props) => {
   return (
     <nav className="Navbar">
         <h2 onClick={onClickH2}>Personal Blogging App</h2>
-        {storedUser && <p className="prof" onClick={onClick}>{user.firstName}</p> }
-        {storedUser ? <p className="btn" onClick={logout}>Logout</p> : <Link className="btn" to={props.red}>{props.name}</Link> }
+        <ul>
+            <li>{storedUser && <p onClick={onClick}>{user.firstName}</p> }</li>
+            <li>{storedUser ? <p onClick={logout}>Logout</p> : <Link className="NavBtn" to={props.red}>{props.name}</Link> }</li>
+        </ul>
     </nav>
   );
 }
