@@ -1,5 +1,4 @@
 import React from 'react';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from "./Signup.js";
@@ -25,7 +24,6 @@ function App() {
                 <Route path="/posts/:user" element={<UserPosts />} />
             </Routes>
         </Router>
-        <ToastContainer />
     </>
   )
 }

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
-import { toast } from "react-toastify";
 import "./css/signup.css";
 import Navbar from "./components/Navbar.js";
 import Navheader from "./components/Navheader.js";
@@ -28,7 +27,8 @@ const Signup = () => {
     const onSubmit = e => {
         e.preventDefault();
         if (password !== repPass) {
-            toast.error("Passwords do not match");
+            alert("Passwords do not match");
+            return;
         }
         else {
             setLoadingCircle(true);

@@ -1,13 +1,11 @@
 import React from "react";
 import "../css/navbar.css";
 import {Link, useNavigate} from "react-router-dom";
-import {toast} from "react-toastify";
 const Navbar = (props) => {
     const navigate = useNavigate();
     const logout = () => {
         localStorage.removeItem("user");
         localStorage.removeItem("profileImage");
-        toast.success("Logged out successfully");
         navigate("/login");
     }
 
