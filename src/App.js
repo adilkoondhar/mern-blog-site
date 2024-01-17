@@ -1,5 +1,4 @@
 import React from 'react';
-import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from "./Signup.js";
 import Login from "./Login.js";
